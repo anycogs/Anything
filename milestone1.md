@@ -21,10 +21,13 @@ Storyboard 1:<br />
 
 <br />
 Storyboard 2:<br />
-
+![Alt text](./story_two.jpg)
 
 <br /><br />
 
+Prototype 1:<br />
+![Alt text](./proto_two)
+<br />
 Prototype 1 & 2: 
 [Link](https://www.figma.com/file/NBGSAbq0rwmtyLwMtjSdDMUj/COGS-121-PROTOTYPE?node-id=0%3A1)
 <br /><br />
