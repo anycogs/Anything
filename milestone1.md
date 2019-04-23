@@ -17,16 +17,23 @@ We are excluded from this theme as we each have some degree of proficiency in th
 <br />
 
 Storyboard 1:<br />
-![Alt text](./story_one.jpg)
+![Alt text](./story_one.jpg)<br />
+Description: 
 
-<br />
+<br /><br />
 Storyboard 2:<br />
-![Alt text](./story_two.jpg)
-
+![Alt text](./story_two.jpg)<br />
+Description: 
 <br /><br />
 
 Prototype 1:<br />
-![Alt text](./proto_two.png)
+![Alt text](./proto_two.png)<br />
+Description: 
+<br /><br />
+
+Prototype 2:<br />
+![Alt text]()<br />
+Description: 
 <br /><br />
 
 Prototype 1 & 2: 
