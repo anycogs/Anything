@@ -17,11 +17,15 @@ We are excluded from this theme as we each have some degree of proficiency in th
 <br />
 
 Storyboard 1:<br />
+![Alt text](./story_one.jpg)
 
-Prototype 1: 
+<br />
+Storyboard 2:<br />
+
+
+<br /><br />
+
+Prototype 1 & 2: 
 [Link](https://www.figma.com/file/NBGSAbq0rwmtyLwMtjSdDMUj/COGS-121-PROTOTYPE?node-id=0%3A1)
 <br /><br />
 
-Storyboard 2:
-
-Prototype 2:
