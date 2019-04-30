@@ -1,30 +1,96 @@
 $(document).ready(() => {
+  const buildQueryURL = continent => {
+    console.log(continent);
+    // with glocations, we do not have the most up-to-date articles..specifying pub_year returns very few. I suspect that many articles do not have the glocations tag.
+    //let queryURL = `https://api.nytimes.com/svc/search/v2/articlesearch.json?&fq=news_desk:("World") AND glocations:("${continent}") AND pub_year:2019&`
 
-    const buildQueryURL = (continent) => {
-        let queryURL = "https://api.nytimes.com/svc/suggest/v1/timestags"
-        let queryParams = { "api-key": "AkrdEmaGyx36bK8nSbsifiFDqlm4riEY"}
-        queryParams.query = continent
-        queryParams.filter= "(Geo),(Des)"
-        queryParams.max = 10
+    //problem: it will not take in the continent param. I can make the same request every time, and filter later
+    //let queryURL = `http://api.nytimes.com/svc/news/v3/content/nyt/world/${continent}/200.json?limit=20&`
 
-        return queryURL = $.param(queryParams)
+    let queryURL = "https://api.nytimes.com/svc/topstories/v2/world.json?&";
+    let queryParams = {
+      "api-key": "gJOF6WJteVdApUHmGIV5wZ5PaKffv1OA"
+    };
+    //queryParams.query = continent
+    //queryParams.q = continent
+    //queryParams.fq= "World"
+    console.log(queryURL);
+    //queryParams.filter= "(Geo)"
+    //queryParams.max = 10
+
+    return queryURL + $.param(queryParams);
+  };
+
+  const updatePage = (NYTdata, location) => {
+    console.log(NYTdata, location);
+    let articleObj = [];
+    for (let el of NYTdata.results) {
+      console.log(typeof el.subsection);
+      if (el.subsection == location) {
+        articleObj.push(el);
+      }
     }
+    console.log(articleObj);
 
-    $('.continent-button').click((event) => {
-        event.preventDefault()
-        console.log('you clicked on a continent')
-        let location = $(this).text()
-        let queryURL = buildQueryURL(location)
+    articleObj.forEach(element => {
+      let $articleList = $("<ul>");
+      $articleList.addClass("list-group");
+      $("#article-section").append($articleList);
 
-          $.ajax({
-            url: queryURL,
-            type: 'GET',
-            dataType : 'json',
-            success: (data) => {
-              console.log('Data received:', data);
-              updatePage()
-            },
-          });
-    })
+      let headline = element.title;
+      let $articleListItem = $("<li class='list-group-item articleHeadline'>");
 
-})
+      if (headline) {
+        console.log(headline);
+        $articleListItem.append("<strong> " + headline + "</strong>");
+      }
+
+      let byline = element.byline;
+      if (byline) {
+        console.log(byline);
+        $articleListItem.append("<h5>" + byline + "</h5>");
+      }
+
+      let summary = element.abstract;
+      console.log(summary);
+      if (summary) {
+        $articleListItem.append("<h5>Section: " + summary + "</h5>");
+      }
+
+      // Log published date, and append to document if exists
+      let pubDate = element.published_date;
+      console.log(pubDate);
+      if (pubDate) {
+        $articleListItem.append("<h5>" + pubDate + "</h5>");
+      }
+
+      // Append and log url
+      $articleListItem.append(
+        "<a href='" + element.url + "'>" + element.url + "</a>"
+      );
+      console.log(element.web_url);
+
+      // Append the article
+      $articleList.append($articleListItem);
+    });
+  };
+
+  $(".continent-button").click(event => {
+    event.preventDefault();
+    $("#article-section").empty();
+    console.log("hi " + event.target.id);
+    let location = $(event.target).text();
+    console.log(`clicked on ${location} button`);
+    let queryURL = buildQueryURL(location);
+    console.log(queryURL);
+    $.ajax({
+      url: queryURL,
+      type: "GET",
+      dataType: "json",
+      success: data => {
+        console.log("Data received:", data);
+        updatePage(data, location);
+      }
+    });
+  });
+});
