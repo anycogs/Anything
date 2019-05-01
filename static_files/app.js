@@ -1,5 +1,5 @@
 $(document).ready(() => {
-    $("#dictionary").hide()
+    //$("#dictionary").hide()
     $("#dict-button").click(event => {
         event.preventDefault()
         $("#word-meaning").empty()
