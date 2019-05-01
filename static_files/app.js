@@ -67,13 +67,30 @@ $(document).ready(() => {
 
       // Append and log url
       $articleListItem.append(
-        "<a href='" + element.url + "'>" + element.url + "</a>"
+        `<button class='article_url'">${element.url}</button>`
       );
-      console.log(element.web_url);
+      console.log(element.url);
 
       // Append the article
       $articleList.append($articleListItem);
+
+      
     });
+
+      $(".article_url").click(() => {
+        let contentURL = $(event.target).text()
+        console.log(contentURL)
+        // cannot do ajax call here, need web scrapper to get text 
+        /* $.ajax({
+            url: contentURL,
+            type: "GET",
+            dataType: "json",
+            success: data => {
+              console.log("Data received:", data)
+              
+            }
+          }) */
+     })
   };
 
   $(".continent-button").click(event => {
@@ -96,4 +113,6 @@ $(document).ready(() => {
     })
   })
 
+
+  
 })

@@ -1,6 +1,8 @@
 const express = require('express');
 const axios = require("axios")
 const app = express();
+const request = require('request'); 
+const cheerio = require('cheerio'); 
 app.use(express.static('static_files'));
 
 app.get("/news/:continent", (req, res) => {
