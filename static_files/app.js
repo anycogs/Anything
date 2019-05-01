@@ -1,12 +1,13 @@
 $(document).ready(() => {
-  const buildQueryURL = continent => {
-    console.log(continent);
+  const buildQueryURL = () => {
+    //console.log(continent);
     // with glocations, we do not have the most up-to-date articles..specifying pub_year returns very few. I suspect that many articles do not have the glocations tag.
     //let queryURL = `https://api.nytimes.com/svc/search/v2/articlesearch.json?&fq=news_desk:("World") AND glocations:("${continent}") AND pub_year:2019&`
 
     //problem: it will not take in the continent param. I can make the same request every time, and filter later
     //let queryURL = `http://api.nytimes.com/svc/news/v3/content/nyt/world/${continent}/200.json?limit=20&`
 
+    //Current solution: pull from the same source, sort later. 
     let queryURL = "https://api.nytimes.com/svc/topstories/v2/world.json?&";
     let queryParams = {
       "api-key": "gJOF6WJteVdApUHmGIV5wZ5PaKffv1OA"
@@ -24,7 +25,7 @@ $(document).ready(() => {
   const updatePage = (NYTdata, location) => {
     console.log(NYTdata, location);
     let articleObj = [];
-    for (let el of NYTdata.results) {
+    for (let el of NYTdata) {
       console.log(typeof el.subsection);
       if (el.subsection == location) {
         articleObj.push(el);
@@ -66,31 +67,52 @@ $(document).ready(() => {
 
       // Append and log url
       $articleListItem.append(
-        "<a href='" + element.url + "'>" + element.url + "</a>"
+        `<button class='article_url'">${element.url}</button>`
       );
-      console.log(element.web_url);
+      console.log(element.url);
 
       // Append the article
       $articleList.append($articleListItem);
+
+      
     });
+
+      $(".article_url").click(() => {
+        let contentURL = $(event.target).text()
+        console.log(contentURL)
+        // cannot do ajax call here, need web scrapper to get text 
+        /* $.ajax({
+            url: contentURL,
+            type: "GET",
+            dataType: "json",
+            success: data => {
+              console.log("Data received:", data)
+              
+            }
+          }) */
+     })
   };
 
   $(".continent-button").click(event => {
-    event.preventDefault();
-    $("#article-section").empty();
-    console.log("hi " + event.target.id);
-    let location = $(event.target).text();
-    console.log(`clicked on ${location} button`);
-    let queryURL = buildQueryURL(location);
-    console.log(queryURL);
+    event.preventDefault()
+    $("#article-section").empty()
+    let location = $(event.target).text()
+    let location_id = event.target.id
+    let loc_url = `news/${location_id}`
+    console.log(`clicked on ${location_id} button`)
+    let queryURL = buildQueryURL()
+    console.log(queryURL)
     $.ajax({
-      url: queryURL,
+      url: loc_url,
       type: "GET",
       dataType: "json",
       success: data => {
-        console.log("Data received:", data);
-        updatePage(data, location);
+        console.log("Data received:", data)
+        updatePage(data, location)
       }
-    });
-  });
-});
+    })
+  })
+
+
+  
+})
