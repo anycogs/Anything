@@ -79,6 +79,7 @@ $(document).ready(() => {
             if (headline) {
                 console.log(headline);
                 $articleListItem.append("<strong> " + headline + "</strong>");
+                $articleListItem.append(`<button class="save-btn" id="save${index}">Save Article</button>`);
             }
 
             let byline = element.byline;
@@ -138,6 +139,18 @@ $(document).ready(() => {
 
                 }
             });
+        })
+
+        $(".save-btn").click(() => {
+            let position = event.target.id.slice(4)
+            let btnURL = `btn${position}`
+            let saveURL = $(`#${btnURL}`).text()
+            $(event.target).css('background-color',"green")
+            //let divPosition = event.target.id.slice(4)
+            //let divName = `article${divPosition}`
+            //$(`#${divName}`).prepend(`<h3 style="color:green; text-decoration:underline;">Article saved in archive</h3>`)
+            console.log(position,btnURL, saveURL)
+
         })
     };
 

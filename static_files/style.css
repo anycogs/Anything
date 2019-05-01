@@ -45,3 +45,7 @@ nav ul li a:hover {
 .articleContent{
     padding: 1em;
 }
+
+.save-btn{
+    margin-left: 2px;
+}
