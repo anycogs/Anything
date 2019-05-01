@@ -5,9 +5,18 @@
     <title>Learn English from World News</title>
     <script src="https://code.jquery.com/jquery-3.4.0.min.js"
         integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">    
 </head>
 
 <body>
+    <div id="dictionary">Dictionary<br>
+        <form>
+        <input type="text" id='dict-box'><br>
+        <button type="submit" id="dict-button">See Definition</button>
+        <button type="button" id="reset-button">Reset</button>
+        </form>
+        <div id='word-meaning'></div>
+    </div>
     <button id='asia' class='continent-button'>Asia Pacific</button>
     <button id='africa' class='continent-button'>Africa</button>
     <button id='europe' class='continent-button'>Europe</button>

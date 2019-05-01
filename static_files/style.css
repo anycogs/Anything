@@ -1,0 +1,9 @@
+#dictionary{
+    position:absolute;
+    top: 10px;
+    right: 40px;
+    min-width: 100px ;
+    min-height: 80px;
+    border: 3px solid burlywood;
+    padding: 3px;
+}
