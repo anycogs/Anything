@@ -3,7 +3,22 @@ const axios = require("axios")
 const app = express();
 const request = require('request'); 
 const cheerio = require('cheerio'); 
+const bodyParser = require('body-parser');
+const path = require("path");
+
 app.use(express.static('static_files'));
+
+// Scraping not working yet, use a fake article
+const articleContent = {
+    'article': "Article: New York Times does not allow scraping of article, we just have the metadata from API call. Will look into other news API alternatives. A day after his father became the first monarch to abdicate the imperial throne of Japan in more than two centuries, the new emperor, Naruhito, on Wednesday received the sacred imperial regalia that represents his rightful succession to the world’s oldest monarchy.In an eye-blinkingly brief ceremony at the Imperial Palace, Naruhito, 59, officially succeeded Akihito, 85, an enormously popular monarch who brought the royal family much closer to the people as he emphasized a message of peace in a country haunted by the legacy of war."
+  };
+
+  app.get("/", function(req, res) {
+    res.sendFile(path.join(__dirname, "/static_files/index.html"));
+  });
+  app.get("/archive", function(req, res) {
+    res.sendFile(path.join(__dirname, "/static_files/archive.html"));
+  });
 
 app.get("/news/:continent", (req, res) => {
     console.log("You hit the /:continent endpoint")
@@ -18,8 +33,23 @@ app.get("/news/:continent", (req, res) => {
         .catch(function (error) {
             console.log(error)
         })
-
 })
+
+app.use(bodyParser.urlencoded({extended: true}));
+app.post("/articles", (req, res) => {
+        console.log(req.body)
+        let searchURL = req.body.url
+    //Not able to scrape NYT article content, welp. Use fake data for now
+        /* request(searchURL, (err, res, body) => {
+            const $ = cheerio.load(body)
+            let bodyContent = $("section.meteredContent")
+            console.log(bodyContent.children)
+        }) */
+
+        res.send({text:articleContent.article})
+})
+
+
 
 app.listen(3000, () => {
     console.log('Server started at http://localhost:3000/')
