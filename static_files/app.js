@@ -33,10 +33,14 @@ $(document).ready(() => {
     }
     console.log(articleObj);
 
-    articleObj.forEach(element => {
+    articleObj.forEach((element, index) => {
       let $articleList = $("<ul>");
+      let $articleContent = $("<div>");
       $articleList.addClass("list-group");
+      $articleContent.addClass("articleContent")
+      $articleContent.attr('id', `article${index}`)
       $("#article-section").append($articleList);
+      $("#article-section").append($articleContent);
 
       let headline = element.title;
       let $articleListItem = $("<li class='list-group-item articleHeadline'>");
@@ -55,7 +59,7 @@ $(document).ready(() => {
       let summary = element.abstract;
       console.log(summary);
       if (summary) {
-        $articleListItem.append("<h5>Section: " + summary + "</h5>");
+        $articleListItem.append("<h5>Summary: " + summary + "</h5>");
       }
 
       // Log published date, and append to document if exists
@@ -67,7 +71,7 @@ $(document).ready(() => {
 
       // Append and log url
       $articleListItem.append(
-        `<button class='article_url'">${element.url}</button>`
+        `<button id='btn${index}' class='article_url'">${element.url}</button>`
       );
       console.log(element.url);
 
@@ -79,19 +83,35 @@ $(document).ready(() => {
 
       $(".article_url").click(() => {
         let contentURL = $(event.target).text()
-        console.log(contentURL)
-        // cannot do ajax call here, need web scrapper to get text 
-        /* $.ajax({
-            url: contentURL,
-            type: "GET",
-            dataType: "json",
-            success: data => {
-              console.log("Data received:", data)
+        // get the index of the button, use it to find the right div to display article 
+        let position = event.target.id.slice(3)
+        let divName = `article${position}`
+        // sending url to backend 
+          $.ajax({
+            url: 'articles',
+            type: 'POST', 
+            data: {url: contentURL},
+            success: (data) => {
+              //display the article content 
+              console.log(data.text)
+              //showFullArticle(data.text)
+              $(".articleContent").empty()
+             $(`#${divName}`).append(`<p>${data.text}</p>`)
+              //get translation 
+              $.get(`https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20190501T072650Z.c012f8eef4eff635.e609a17a0470a925851de9a2a0b56bf9f0641315&text=${data.text}&lang=en-zh`, function(data){
+                  console.log(data.text[0])
+                  $(`#${divName}`).append(`<p>${data.text[0]}</p>`)
+              })
               
             }
-          }) */
+          });
      })
   };
+
+  /* const showFullArticle = text => {
+    $(".show-content").empty()
+      $(".show-content").append(`<p>${text}</p>`)
+  } */
 
   $(".continent-button").click(event => {
     event.preventDefault()
@@ -112,7 +132,4 @@ $(document).ready(() => {
       }
     })
   })
-
-
-  
 })
