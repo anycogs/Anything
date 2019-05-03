@@ -5,8 +5,13 @@ const request = require('request');
 const cheerio = require('cheerio'); 
 const bodyParser = require('body-parser');
 const path = require("path");
+const sqlite3 = require('sqlite3');
+const db = new sqlite3.Database('articles.db');
+const exphbs  = require('express-handlebars');
 
 app.use(express.static('static_files'));
+app.engine('handlebars', exphbs({defaultLayout: 'main', layoutsDir:__dirname + '/views'}));
+app.set('view engine', 'handlebars');
 
 // Scraping not working yet, use a fake article
 const articleContent = {
@@ -14,10 +19,17 @@ const articleContent = {
   };
 
   app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "/static_files/index.html"));
+    //res.sendFile(path.join(__dirname, "/static_files/index.html"));
+    res.render('index')
   });
   app.get("/archive", function(req, res) {
-    res.sendFile(path.join(__dirname, "/static_files/archive.html"));
+    db.all('SELECT * FROM saved_articles', (err, rows) => {
+        console.log(rows);
+        const allLinks = rows.map(e => e.link);
+        console.log(allLinks);
+        res.render('archive', {link: allLinks})
+      });
+    
   });
 
 app.get("/news/:continent", (req, res) => {
@@ -36,7 +48,7 @@ app.get("/news/:continent", (req, res) => {
 })
 
 app.use(bodyParser.urlencoded({extended: true}));
-app.post("/articles", (req, res) => {
+app.post('/articles', (req, res) => {
         console.log(req.body)
         let searchURL = req.body.url
     //Not able to scrape NYT article content, welp. Use fake data for now
@@ -47,6 +59,24 @@ app.post("/articles", (req, res) => {
         }) */
 
         res.send({text:articleContent.article})
+})
+
+app.post('/archives', (req, res) => {
+    console.log(req.body)
+    // insert  into the archives database 
+    db.run(
+        'INSERT INTO saved_articles VALUES ($link)',
+        {
+          $link: req.body.link,
+        },
+        (err) => {
+          if (err) {
+            res.send({message: 'error in app.post(/archives)'});
+          } else {
+            res.send({message: 'successfully run app.post(/archives)'});
+          }
+        }
+      );
 })
 
 

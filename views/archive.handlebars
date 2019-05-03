@@ -1,0 +1,24 @@
+<nav>
+        <ul>
+            <li><a href="/" id="nav-archive">Return Home</a></li>
+        </ul>
+    </nav>
+    <div id="dictionary" align='center'>Dictionary<br>
+        <form>
+            <input type="text" id='dict-box'><br>
+            <button type="button" id="reset-button">Reset</button>
+            <button type="submit" id="dict-button">See Definition</button>
+        </form>
+        <div id='word-meaning' align='left'></div>
+    </div>
+
+    <div id='all_archives'>
+        <h2>Your Saved Articles:</h2>
+         <ul>
+          {{#each link}}
+            <div>
+              <li>{{this.link}}</li>
+            </div>
+          {{/each}}
+        </ul>
+    </div>
