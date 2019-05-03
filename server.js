@@ -26,8 +26,9 @@ const articleContent = {
     db.all('SELECT * FROM saved_articles', (err, rows) => {
         console.log(rows);
         const allLinks = rows.map(e => e.link);
-        console.log(allLinks);
-        res.render('archive', {link: allLinks})
+        console.log(allLinks[0]);
+        console.log(typeof(allLinks[0]));
+        res.render('archive', {links: allLinks})
       });
     
   });

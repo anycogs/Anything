@@ -114,7 +114,7 @@ $(document).ready(() => {
 
             });
         } else {
-            $("#article-section").append(`<h2>No recent news from this continent at the moment, please come back another time.</h2>`);
+            $("#article-section").append(`<h2>No recent news from this continent at this time.</h2>`);
         }
 
         $(".article_url").click(() => {

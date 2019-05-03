@@ -15,9 +15,9 @@
     <div id='all_archives'>
         <h2>Your Saved Articles:</h2>
          <ul>
-          {{#each link}}
+          {{#each links}}
             <div>
-              <li>{{this.link}}</li>
+              <li><a href={{this}}  target="_blank" >{{this}}</a></li>
             </div>
           {{/each}}
         </ul>
