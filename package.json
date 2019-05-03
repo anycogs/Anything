@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -18,8 +18,10 @@
     "body-parser": "^1.19.0",
     "cheerio": "^1.0.0-rc.3",
     "express": "^4.16.4",
+    "express-handlebars": "^3.0.2",
     "nodemon": "^1.18.11",
     "path": "^0.12.7",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "sqlite3": "^4.0.6"
   }
 }
