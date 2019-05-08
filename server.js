@@ -50,28 +50,28 @@ app.get("/news/:continent", (req, res) => {
   let country = ''
   switch (location) {
     case 'asia':
-      country = 'cn'
+      country = 'asia OR china OR japan OR india OR korea'
       break
     case 'africa':
-      country = 'za'
+      country = 'africa OR nigeria OR morocco OR ethiopia OR africa'
       break
     case 'europe':
-      country = 'gb'
+      country = 'europe OR EU or britain OR france OR germany'
       break
     case 'middle_east':
-      country = 'sa'
+      country = 'middle east OR iran OR Iraq OR syria OR saudi'
       break
     case 'americas':
-      country = 'us'
+      country = 'united states OR america OR latin america'
       break
     case 'australia':
-      country = 'au'
+      country = 'australia'
       break
     default:
       console.log("unidentified continent")
   }
 
-  queryString = `https://newsapi.org/v2/top-headlines?language=en&country=${country}&sortBy=popularity&apiKey=${news_api_key}`
+  queryString = `https://newsapi.org/v2/everything?sortBy=publishedAt&language=en&q=${country}&apiKey=${news_api_key}`
   console.log(queryString)
 
   /*  axios.get('https://api.nytimes.com/svc/topstories/v2/world.json?&api-key=gJOF6WJteVdApUHmGIV5wZ5PaKffv1OA') */
