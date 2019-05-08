@@ -49,3 +49,10 @@ nav ul li a:hover {
 .save-btn{
     margin-left: 2px;
 }
+
+.visible {
+  visibility: visible !important;
+}
+.invisible {
+  visibility: hidden !important;
+}

@@ -30,7 +30,7 @@ $(document).ready(() => {
     })
 
 
-    const buildQueryURL = () => {
+    /* const buildQueryURL = () => { */
         //console.log(continent);
         // with glocations, we do not have the most up-to-date articles..specifying pub_year returns very few. I suspect that many articles do not have the glocations tag.
         //let queryURL = `https://api.nytimes.com/svc/search/v2/articlesearch.json?&fq=news_desk:("World") AND glocations:("${continent}") AND pub_year:2019&`
@@ -39,7 +39,7 @@ $(document).ready(() => {
         //let queryURL = `http://api.nytimes.com/svc/news/v3/content/nyt/world/${continent}/200.json?limit=20&`
 
         //Current solution: pull from the same source, sort later. 
-        let queryURL = "https://api.nytimes.com/svc/topstories/v2/world.json?&";
+      /*   let queryURL = "https://api.nytimes.com/svc/topstories/v2/world.json?&";
         let queryParams = {
             "api-key": "gJOF6WJteVdApUHmGIV5wZ5PaKffv1OA"
         };
@@ -51,9 +51,9 @@ $(document).ready(() => {
         //queryParams.max = 10
 
         return queryURL + $.param(queryParams);
-    };
+    }; */
 
-    const updatePage = (NYTdata, location) => {
+    /* const updatePage = (NYTdata, location) => {
         console.log(NYTdata, location);
         let articleObj = [];
         for (let el of NYTdata) {
@@ -117,71 +117,62 @@ $(document).ready(() => {
             $("#article-section").append(`<h2>No recent news from this continent at this time.</h2>`);
         }
 
-        $(".article_url").click(() => {
-            let contentURL = $(event.target).text()
-            // get the index of the button, use it to find the right div to display article 
-            let position = event.target.id.slice(3)
-            let divName = `article${position}`
-            // next version:sending url to backend, which calls database, and send the scrapped contents back. For now, it is getting the fake article back from the backend 
-            $.ajax({
-                url: 'articles',
-                type: 'POST',
-                data: {
-                    url: contentURL
-                },
-                success: (data) => {
-                    //display the article content 
-                    console.log(data.text)
-                    //showFullArticle(data.text)
-                    $(".articleContent").empty()
-                    $(`#${divName}`).append(`<p>${data.text}</p>`)
-                    //get translation from Yandex API
-                    $.get(`https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20190501T072650Z.c012f8eef4eff635.e609a17a0470a925851de9a2a0b56bf9f0641315&text=${data.text}&lang=en-zh`, function (data) {
-                        console.log(data.text[0])
-                        $(`#${divName}`).append(`<p>${data.text[0]}</p>`)
-                    })
+    }; */
 
-                }
-            });
-        })
+    $(".article_url").click(() => {
+        let contentURL = $(event.target).text()
+        // get the index of the button, use it to find the right div to display article 
+        let position = event.target.id.slice(3)
+        let articleDiv = `content${position}`
+        let translateDiv = `translate${position}`
+        console.log(articleDiv)
+        //$(`#${articleDiv}`).removeClass("invisible").addClass("visible")
+       let articleText = $(`#${articleDiv}`).text()
+       console.log(articleText)
+        // next version:sending url to backend, which calls database, and send the scrapped contents back. For now, it is getting the fake article back from the backend 
+                //get translation from Yandex API
+                 $.get(`https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20190501T072650Z.c012f8eef4eff635.e609a17a0470a925851de9a2a0b56bf9f0641315&text=${articleText}&lang=en-zh`, function (data) {
+                    console.log(data.text[0])
+                    $(`#${translateDiv}`).append(`<p>${data.text[0]}</p>`)
+                    //$(`#${translateDiv}`).removeClass("invisible").addClass("visible")
+                    
+                }) 
+            })  
 
-        $(".save-btn").click(() => {
-            //index
-            let position = event.target.id.slice(4)
-            //id of the button with URL
-            let btnURL = `btn${position}`
-            //the actual URL
-            let saveURL = $(`#${btnURL}`).text()
-            // use id of the content div, get all the li 
-            //$(`#article${position}`).find("ul").css('font-size','8em')
+    $(".save-btn").click(() => {
+        //index
+        let position = event.target.id.slice(3)
+       console.log(position)
+        let saveURL = $(`#url${position}`).text()
+        // use id of the content div, get all the li 
+        //$(`#article${position}`).find("ul").css('font-size','8em')
 
 
-            //let divPosition = event.target.id.slice(4)
-            //let divName = `article${divPosition}`
-            //$(`#${divName}`).prepend(`<h3 style="color:green; text-decoration:underline;">Article saved in archive</h3>`)
-            console.log(saveURL)
-            // get the info on targeted articles, post to archives. 
-            $.ajax({
-                url: 'archives',
-                type: "POST",
-                dataType: "json",
-                data: {
-                    link: saveURL,
-                },
-                success: data => {
-                    console.log("save into archive status:", data)
-                    $(`#save${position}`).css('background-color', "green")
-                }
-            })
-        })
-    };
+        //let divPosition = event.target.id.slice(4)
+        //let divName = `article${divPosition}`
+        //$(`#${divName}`).prepend(`<h3 style="color:green; text-decoration:underline;">Article saved in archive</h3>`)
+        console.log(saveURL)
+        // get the info on targeted articles, post to archives. 
+         $.ajax({
+            url: '/archives',
+            type: "POST",
+            dataType: "json",
+            data: {
+                link: saveURL,
+            },
+            success: data => {
+                console.log("save into archive status:", data)
+                $(`#btn${position}`).css('background-color', "green")
+            }
+        }) 
+    })
 
     /* const showFullArticle = text => {
       $(".show-content").empty()
         $(".show-content").append(`<p>${text}</p>`)
     } */
 
-    $(".continent-button").click(event => {
+    /* $(".continent-button").click(event => {
         event.preventDefault()
         $("#dictionary").show()
         $("#article-section").empty()
@@ -197,8 +188,8 @@ $(document).ready(() => {
             dataType: "json",
             success: data => {
                 console.log("Data received:", data)
-                updatePage(data, location)
+                //updatePage(data, location)
             }
         })
-    })
+    }) */
 })

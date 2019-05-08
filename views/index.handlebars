@@ -1,21 +1,43 @@
 <nav>
-        <ul>
-            <li><a href="/archive" id="nav-archive">My Archive</a></li>
-        </ul>
-    </nav>
-    <div id="dictionary" align='center'>Dictionary<br>
-        <form>
-            <input type="text" id='dict-box'><br>
-            <button type="button" id="reset-button">Reset</button>
-            <button type="submit" id="dict-button">See Definition</button>
-        </form>
-        <div id='word-meaning' align='left'></div>
-    </div>
-    <button id='asia' class='continent-button'>Asia Pacific</button>
-    <button id='africa' class='continent-button'>Africa</button>
-    <button id='europe' class='continent-button'>Europe</button>
-    <button id='middle_east' class='continent-button'>Middle East</button>
-    <button id='americas' class='continent-button'>Americas</button>
-    <button id='australia' class='continent-button'>Australia</button>
+    <ul>
+        <li><a href="/archive" id="nav-archive">My Archive</a></li>
+    </ul>
+</nav>
+<div id="dictionary" align='center'>Dictionary<br>
+    <form>
+        <input type="text" id='dict-box'><br>
+        <button type="button" id="reset-button">Reset</button>
+        <button type="submit" id="dict-button">See Definition</button>
+    </form>
+    <div id='word-meaning' align='left'></div>
+</div>
+<a id='asia' href='/news/asia' class='btn btn-primary continent-button'>Asia Pacific</a>
+<a id='africa' href='/news/africa' class='btn btn-primary continent-button'>Africa</a>
+<a id='europe' href='/news/europe' class='btn btn-primary continent-button'>Europe</a>
+<a id='middle_east' href='/news/middle_east' class='btn btn-primary continent-button'>Middle East</a>
+<a id='americas' href='/news/americas' class='btn btn-primary continent-button'>Americas</a>
+<a id='australia' href='/news/australia' class='btn btn-primary continent-button'>Australia</a>
 
-    <div id='article-section'></div>
+<div id='article-section' class='container'>
+    <ul>
+        {{#each articles}}
+        <div>
+            <li>
+                <h2 id="title{{@index}}">{{this.title}}</h2><button class='save-btn' id="btn{{@index}}">save
+                    article</button>
+            </li>
+            <h6 id="date{{@index}}">{{this.publishedAt}}</h6>
+            <h5>{{this.source.name}}</h5>
+            <h5>Summary | {{this.description}}</h5>
+            <button class="btn btn-primary article_url"  id="url{{@index}}" type="button" data-toggle="collapse" data-target="#collapseExample{{@index}}" aria-expanded="false" aria-controls="collapseExample">
+    {{this.url}}
+  </button>
+            <div class="collapse row" id="collapseExample{{@index}}">
+                <p class='col-sm-6 card' id="content{{@index}}">{{this.content}}</p>
+                <p class='col-sm-6 card' id="translate{{@index}}"></p>
+            </div>
+
+        </div>
+        {{/each}}
+    </ul>
+</div>
