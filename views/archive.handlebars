@@ -1,24 +1,27 @@
 <nav>
-        <ul>
-            <li><a href="/" id="nav-archive">Return Home</a></li>
-        </ul>
-    </nav>
-    <div id="dictionary" align='center'>Dictionary<br>
-        <form>
-            <input type="text" id='dict-box'><br>
-            <button type="button" id="reset-button">Reset</button>
-            <button type="submit" id="dict-button">See Definition</button>
-        </form>
-        <div id='word-meaning' align='left'></div>
+  <ul>
+    <li><a href="/" id="nav-archive">Return Home</a></li>
+  </ul>
+</nav>
+<div id="dictionary" align='center'>Dictionary<br>
+  <form>
+    <input type="text" id='dict-box'><br>
+    <button type="button" id="reset-button">Reset</button>
+    <button type="submit" id="dict-button">See Definition</button>
+  </form>
+  <div id='word-meaning' align='left'></div>
+</div>
+<h2 align='center'>Bookmarked Articles:</h2>
+<div id='all_archives' class="card-columns" style="margin-top:4em;padding:0 2em 0;">
+    {{#each articles}}
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{this.title}}</h5>
+        <p class="card-text">{{this.description}}</p>
+        <a href={{this.link}} target="_blank">{{this.link}}</a>
+        <p class="card-text"><small class="text-muted">{{this.date}}</small></p>
+      </div>
     </div>
+    {{/each}}
 
-    <div id='all_archives'>
-        <h2>Your Saved Articles:</h2>
-         <ul>
-          {{#each links}}
-            <div>
-              <li><a href={{this}}  target="_blank" >{{this}}</a></li>
-            </div>
-          {{/each}}
-        </ul>
-    </div>
+</div>

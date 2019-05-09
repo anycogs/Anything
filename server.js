@@ -32,11 +32,12 @@ app.get("/", function (req, res) {
 app.get("/archive", function (req, res) {
   db.all('SELECT * FROM saved_articles', (err, rows) => {
     console.log(rows);
-    const allLinks = rows.map(e => e.link);
-    console.log(allLinks[0]);
-    console.log(typeof (allLinks[0]));
-    res.render('archive', {
-      links: allLinks
+    /* const allLinks = rows.map(e => e.link);
+    const allTitles = rows.map(e => e.title);
+    const allDate = rows.map(e => e.date);
+    const allDescription = rows.map(e => e.description); */
+    //console.log(allTitles, allLinks, allDate, allDescription)
+    res.render('archive', {articles: rows
     })
   });
 
@@ -107,8 +108,11 @@ app.post('/archives', (req, res) => {
   console.log(req.body)
   // insert  into the archives database 
   db.run(
-    'INSERT INTO saved_articles VALUES ($link)', {
-      $link: req.body.link,
+    'INSERT INTO saved_articles VALUES ($title, $date, $description, $link)', {
+      $title: req.body.title,
+      $date: req.body.date,
+      $description: req.body.description,
+      $link: req.body.link
     },
     (err) => {
       if (err) {
@@ -118,6 +122,30 @@ app.post('/archives', (req, res) => {
       } else {
         res.send({
           message: 'successfully run app.post(/archives)'
+        });
+      }
+    }
+  );
+})
+
+app.post('/vocabulary', (req, res) => {
+  console.log(req.body)
+  // insert  into the archives database 
+  db.run(
+    'INSERT INTO vocabulary VALUES ($title, $meaning, $syns, $translation)', {
+      $title: req.body.title,
+      $meaning: req.body.meaning,
+      $syns: req.body.syns,
+      $translation: req.body.translation
+    },
+    (err) => {
+      if (err) {
+        res.send({
+          message: 'error in app.post(/vocabulary)'
+        });
+      } else {
+        res.send({
+          message: 'successfully run app.post(/vocabulary)'
         });
       }
     }

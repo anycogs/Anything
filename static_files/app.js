@@ -2,44 +2,75 @@ $(document).ready(() => {
     //$("#dictionary").hide()
     $("#dict-button").click(event => {
         event.preventDefault()
-        $("#word-meaning").empty()
         lookupword = $("#dict-box").val()
-        console.log(lookupword)
+        if(lookupword){
+        $('#dictModal').modal()
+        $('#added_vocab').addClass("invisible")
+        $('#saveVocab').removeAttr("disabled");
+        }
+        $("#word-meaning").empty()
+        $(".modal-title").empty()
+        $(".modal-title").append(`Definitions of ${lookupword}`)
+        $(".modal-body").empty()
         $.get(`https://www.dictionaryapi.com/api/v3/references/thesaurus/json/${lookupword}?key=4dc43c31-b7b2-4f24-81e3-3beec40a5906`, function (data) {
             console.log(data)
             if (data[0].shortdef) {
-                $("#word-meaning").append(`<p>Meaning: ${data[0].shortdef[0]}</p>`)
+                $(".modal-body").append(`<p class='meaning'>Meaning: ${data[0].shortdef[0]}</p>
+                <p class='syns'>Synonyms: ${data[0].meta.syns[0].slice(0,3)} </p>`)
             } else {
-                $("#word-meaning").append(`<p>${lookupword} is not found in our English dictionary</p>`)
+                $(".modal-body").append(`<p>${lookupword} is not found in our English dictionary</p>`)
             }
         })
         $.get(`https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20190501T072650Z.c012f8eef4eff635.e609a17a0470a925851de9a2a0b56bf9f0641315&text=${lookupword}&lang=en-zh`, function (data) {
             console.log(data.text[0])
             if (data.text[0].match(/[a-z]/i)) {
-                $("#word-meaning").append(`<p>no Chinese for ${lookupword}</p>`)
+                $(".modal-body").append(`<p>no Chinese translation for ${lookupword}</p>`)
             } else {
-                $("#word-meaning").append(`<p>In Chinese: ${data.text[0]}</p>`)
+                $(".modal-body").append(`<p class='translated'>In Chinese: ${data.text[0]}</p>`)
+            }
+        })
+    })
+
+    $("#saveVocab").click(event => {
+        event.preventDefault()
+        let title = $(".modal-title").val()
+        let meaning = $(".meaning").val()
+        let syns = $(".syns").val()
+        let translated = $(".translated").val()
+        $.ajax({
+            url: '/vocabulary',
+            type: "POST",
+            dataType: "json",
+            data: {
+                title: title,
+                meaning: meaning,
+                syns: syns,
+                translation: translated
+            },
+            success: data => {
+                console.log("save into archive status:", data)
+                // right now the color change does not persist
+                $('#added_vocab').removeClass("invisible")
+                //disable the add button 
+                $('#saveVocab').attr('disabled', 'disabled')
             }
         })
     })
 
     $("#reset-button").click(event => {
-        event.preventDefault()
-        $("#dict-box").val('')
-        $("#word-meaning").empty()
+        $("#dict-box").val("")
     })
 
-
     /* const buildQueryURL = () => { */
-        //console.log(continent);
-        // with glocations, we do not have the most up-to-date articles..specifying pub_year returns very few. I suspect that many articles do not have the glocations tag.
-        //let queryURL = `https://api.nytimes.com/svc/search/v2/articlesearch.json?&fq=news_desk:("World") AND glocations:("${continent}") AND pub_year:2019&`
+    //console.log(continent);
+    // with glocations, we do not have the most up-to-date articles..specifying pub_year returns very few. I suspect that many articles do not have the glocations tag.
+    //let queryURL = `https://api.nytimes.com/svc/search/v2/articlesearch.json?&fq=news_desk:("World") AND glocations:("${continent}") AND pub_year:2019&`
 
-        //problem: it will not take in the continent param. I can make the same request every time, and filter later
-        //let queryURL = `http://api.nytimes.com/svc/news/v3/content/nyt/world/${continent}/200.json?limit=20&`
+    //problem: it will not take in the continent param. I can make the same request every time, and filter later
+    //let queryURL = `http://api.nytimes.com/svc/news/v3/content/nyt/world/${continent}/200.json?limit=20&`
 
-        //Current solution: pull from the same source, sort later. 
-      /*   let queryURL = "https://api.nytimes.com/svc/topstories/v2/world.json?&";
+    //Current solution: pull from the same source, sort later. 
+    /*   let queryURL = "https://api.nytimes.com/svc/topstories/v2/world.json?&";
         let queryParams = {
             "api-key": "gJOF6WJteVdApUHmGIV5wZ5PaKffv1OA"
         };
@@ -127,44 +158,43 @@ $(document).ready(() => {
         let translateDiv = `translate${position}`
         console.log(articleDiv)
         //$(`#${articleDiv}`).removeClass("invisible").addClass("visible")
-       let articleText = $(`#${articleDiv}`).text()
-       console.log(articleText)
+        let articleText = $(`#${articleDiv}`).text()
+        console.log(articleText)
         // next version:sending url to backend, which calls database, and send the scrapped contents back. For now, it is getting the fake article back from the backend 
-                //get translation from Yandex API
-                 $.get(`https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20190501T072650Z.c012f8eef4eff635.e609a17a0470a925851de9a2a0b56bf9f0641315&text=${articleText}&lang=en-zh`, function (data) {
-                    console.log(data.text[0])
-                    $(`#${translateDiv}`).append(`<p>${data.text[0]}</p>`)
-                    //$(`#${translateDiv}`).removeClass("invisible").addClass("visible")
-                    
-                }) 
-            })  
+        //get translation from Yandex API
+        $.get(`https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20190501T072650Z.c012f8eef4eff635.e609a17a0470a925851de9a2a0b56bf9f0641315&text=${articleText}&lang=en-zh`, function (data) {
+            console.log(data.text[0])
+            $(`#${translateDiv}`).append(`<p>${data.text[0]}</p>`)
+            //$(`#${translateDiv}`).removeClass("invisible").addClass("visible")
+
+        })
+    })
 
     $(".save-btn").click(() => {
-        //index
         let position = event.target.id.slice(3)
-       console.log(position)
+        console.log(position)
         let saveURL = $(`#url${position}`).text()
-        // use id of the content div, get all the li 
-        //$(`#article${position}`).find("ul").css('font-size','8em')
-
-
-        //let divPosition = event.target.id.slice(4)
-        //let divName = `article${divPosition}`
-        //$(`#${divName}`).prepend(`<h3 style="color:green; text-decoration:underline;">Article saved in archive</h3>`)
-        console.log(saveURL)
+        let saveTitle = $(`#title${position}`).text()
+        let saveDate = $(`#date${position}`).text()
+        let saveDescription = $(`#description${position}`).text()
+        console.log(saveURL, saveTitle, saveDate, saveDescription)
         // get the info on targeted articles, post to archives. 
-         $.ajax({
+        $.ajax({
             url: '/archives',
             type: "POST",
             dataType: "json",
             data: {
-                link: saveURL,
+                title: saveTitle,
+                date: saveDate,
+                description: saveDescription,
+                link: saveURL
             },
             success: data => {
                 console.log("save into archive status:", data)
+                // right now the color change does not persist
                 $(`#btn${position}`).css('background-color', "green")
             }
-        }) 
+        })
     })
 
     /* const showFullArticle = text => {
