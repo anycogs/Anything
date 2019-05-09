@@ -111,7 +111,7 @@ app.use(bodyParser.urlencoded({
   })
 })
  */
-app.post('/archives', (req, res) => {
+app.post('/archive', (req, res) => {
   console.log(req.body)
   // insert  into the archives database 
   db.run(
@@ -170,6 +170,22 @@ app.delete('/vocabulary', (req, res) => {
         res.send({message: 'error in app.delete(/vocabulary)'});
       } else {
         res.send({message: 'successfully run app.delete(/vocabulary)'});
+      }
+    }
+  )
+})
+
+app.delete('/archive', (req, res) => {
+  db.run(
+    'DELETE FROM saved_articles WHERE title=$title',
+    {
+      $title: req.body.title
+    },
+    (err) => {
+      if (err) {
+        res.send({message: 'error in app.delete(/archive)'});
+      } else {
+        res.send({message: 'successfully run app.delete(/archive)'});
       }
     }
   )

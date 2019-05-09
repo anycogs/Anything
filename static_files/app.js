@@ -92,7 +92,7 @@ $(document).ready(() => {
         console.log(saveURL, saveTitle, saveDate, saveDescription)
         // get the info on targeted articles, post to archives. 
         $.ajax({
-            url: '/archives',
+            url: '/archive',
             type: "POST",
             dataType: "json",
             data: {
@@ -121,6 +121,23 @@ $(document).ready(() => {
             success: data => {
                 console.log("save into archive status:", data)
                 //page reload?
+                location.reload()
+            }
+        })
+    })
+
+    $(".delete_archive").click(() => {
+        let archiveTitle = $("#archive_title").text()
+        $.ajax({
+            url: '/archive',
+            type: "DELETE",
+            dataType: "json",
+            data: {
+                title: archiveTitle
+            },
+            success: data => {
+                console.log("save into archive status:", data)
+                //page reload
                 location.reload()
             }
         })

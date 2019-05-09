@@ -43,8 +43,11 @@
 <div id='all_archives' class="card-columns" style="margin-top:4em;padding:0 2em 0;">
     {{#each articles}}
     <div class="card">
+       <button type="button" class="close delete_archive">
+          <span aria-hidden="true">&times;</span>
+        </button>
       <div class="card-body">
-        <h5 class="card-title">{{this.title}}</h5>
+        <h5 class="card-title" id="archive_title">{{this.title}}</h5>
         <p class="card-text">{{this.description}}</p>
         <a href={{this.link}} target="_blank">{{this.link}}</a>
         <p class="card-text"><small class="text-muted">{{this.date}}</small></p>
