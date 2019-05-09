@@ -40,8 +40,15 @@ app.get("/archive", function (req, res) {
     res.render('archive', {articles: rows
     })
   });
-
 });
+app.get("/vocabulary", function (req, res) {
+  db.all('SELECT * FROM vocabulary', (err, rows) => {
+    console.log(rows);
+    res.render('vocabulary', {vocab: rows
+    })
+  });
+});
+
 
 app.get("/news/:continent", (req, res) => {
   console.log("You hit the /:continent endpoint")
@@ -150,6 +157,22 @@ app.post('/vocabulary', (req, res) => {
       }
     }
   );
+})
+
+app.delete('/vocabulary', (req, res) => {
+  db.run(
+    'DELETE FROM vocabulary WHERE title=$title',
+    {
+      $title: req.body.title
+    },
+    (err) => {
+      if (err) {
+        res.send({message: 'error in app.delete(/vocabulary)'});
+      } else {
+        res.send({message: 'successfully run app.delete(/vocabulary)'});
+      }
+    }
+  )
 })
 
 
