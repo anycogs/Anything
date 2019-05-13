@@ -79,7 +79,7 @@ app.get("/news/:continent", (req, res) => {
       console.log("unidentified continent")
   }
 
-  queryString = `https://newsapi.org/v2/everything?sortBy=publishedAt&language=en&q=${country}&apiKey=${news_api_key}`
+  queryString = `https://newsapi.org/v2/everything?sortBy=publishedAt&language=en&q=${country}&apiKey=6141e4cc6c844625ad31007f310e9789`
   console.log(queryString)
 
   /*  axios.get('https://api.nytimes.com/svc/topstories/v2/world.json?&api-key=gJOF6WJteVdApUHmGIV5wZ5PaKffv1OA') */
