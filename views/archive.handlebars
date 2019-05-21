@@ -44,10 +44,10 @@
     {{#each articles}}
     <div class="card">
        <button type="button" class="close delete_archive">
-          <span aria-hidden="true">&times;</span>
+          <span aria-hidden="true" id="archive_btn{{@index}}">&times;</span>
         </button>
       <div class="card-body">
-        <h5 class="card-title" id="archive_title">{{this.title}}</h5>
+        <h5 class="card-title" id="archive_title{{@index}}">{{this.title}}</h5>
         <p class="card-text">{{this.description}}</p>
         <a href={{this.link}} target="_blank">{{this.link}}</a>
         <p class="card-text"><small class="text-muted">{{this.date}}</small></p>

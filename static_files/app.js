@@ -109,8 +109,12 @@ $(document).ready(() => {
         })
     })
 
-    $(".delete_flashcard").click(() => {
-        let targetTitle = $("#flash_title").text()
+    $(".delete_flashcard").click((event) => {
+        console.log(event.target.id)
+        let position = event.target.id.slice(8)
+        console.log(position)
+        let targetTitle = $(`#flash_title${position}`).text()
+        console.log(targetTitle)
         $.ajax({
             url: '/vocabulary',
             type: "DELETE",
@@ -126,8 +130,11 @@ $(document).ready(() => {
         })
     })
 
-    $(".delete_archive").click(() => {
-        let archiveTitle = $("#archive_title").text()
+    $(".delete_archive").click((event) => {
+        let position = event.target.id.slice(11)
+        console.log(position)
+        let archiveTitle = $(`#archive_title${position}`).text()
+        console.log(archiveTitle)
         $.ajax({
             url: '/archive',
             type: "DELETE",

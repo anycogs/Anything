@@ -42,11 +42,11 @@
 <div class="card-columns" style="margin-top:4em;padding:0 2em 0;">
     {{#each vocab}}
     <div class="card">
-        <button type="button" class="close delete_flashcard">
-          <span aria-hidden="true">&times;</span>
+        <button type="button" class="close delete_flashcard" >
+          <span id="card_btn{{@index}}" aria-hidden="true">&times;</span>
         </button>
       <div class="card-body">
-        <h5 class="card-title" id="flash_title">{{this.title}}</h5>
+        <h5 class="card-title" id="flash_title{{@index}}">{{this.title}}</h5>
         <p class="card-text" id="flash_meaning">{{this.meaning}}</p>
         <p class="card-text" id="flash_syns">{{this.syns}}</p>
         <p class="card-text" id="flash_translation">{{this.translation}}</p>
