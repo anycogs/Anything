@@ -20,7 +20,7 @@ $(document).ready(() => {
                 $(".modal-body").append(`<p>${lookupword} is not found in our English dictionary</p>`)
             }
         })
-        $.get(`https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20190501T072650Z.c012f8eef4eff635.e609a17a0470a925851de9a2a0b56bf9f0641315&text=${lookupword}&lang=en-zh`, function (data) {
+        $.get(`https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20190512T095235Z.32b07b826ad30af3.4a1884546742807e294d8492313751c0f9b4c8ca&text=${lookupword}&lang=en-zh`, function (data) {
             console.log(data.text[0])
             if (data.text[0].match(/[a-z]/i)) {
                 $(".modal-body").append(`<p>no Chinese translation for ${lookupword}</p>`)
@@ -79,6 +79,7 @@ $(document).ready(() => {
             //$(`#${translateDiv}`).removeClass("invisible").addClass("visible")
 
         })
+        document.getElementById("overlay2").style.display = "none";
     })
 
     $(".save-btn").click(() => {
