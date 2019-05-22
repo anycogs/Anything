@@ -77,19 +77,21 @@ app.get("/news/:continent", (req, res) => {
       break
     default:
       console.log("unidentified continent")
+      country = 'united states'
   }
 
-  queryString = `https://newsapi.org/v2/everything?sortBy=publishedAt&language=en&q=${country}&apiKey=23a4ab95c61c457e9d1c99853a269aa5`
+  queryString = `https://newsapi.org/v2/everything?sortBy=publishedAt&language=en&q=${country}&apiKey=813276838e5b4dca9334bd56616cc986`
   console.log(queryString)
 
   /*  axios.get('https://api.nytimes.com/svc/topstories/v2/world.json?&api-key=gJOF6WJteVdApUHmGIV5wZ5PaKffv1OA') */
+  
   axios.get(queryString)
     .then(function (data) {
-      console.log(data.data.articles)
+      console.log("*****************************************************************" + data.data.articles)
       res.render('index', {articles: data.data.articles} )
     })
     .catch(function (error) {
-      console.log(error)
+      /* console.log(error) */
     })
 })
 
