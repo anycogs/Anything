@@ -20,8 +20,8 @@ nav{
 
 
 
-body{
-  background-image: url('map4.jpg');
+body {
+  /* background-image: url('map4.jpg'); */
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -58,4 +58,8 @@ body{
 .on_Location {
   padding:20px 0px 0px 40px;
   position: fixed;
+}
+
+.amPNG {
+  width: 350px;
 }

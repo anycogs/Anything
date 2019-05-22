@@ -80,6 +80,7 @@ $(document).ready(() => {
             //$(`#${translateDiv}`).removeClass("invisible").addClass("visible")
 
         })
+        document.getElementById("overlay2").style.display = "none";
     })
 
     $(".save-btn").click(() => {
@@ -142,4 +143,13 @@ $(document).ready(() => {
             }
         })
     })
+
+    $(document).ready(function() {
+        $(".map").click(function() {
+        //    alert("You clicked on " + $(this).attr('rel'));
+        }); 
+    });
+
+
+    // 
 })
