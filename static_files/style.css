@@ -12,13 +12,37 @@ nav{
 }
 
 .visible {
-  visibility: visible !important;
+  visibility: visible;
 }
 .invisible {
-  visibility: hidden !important;
+  visibility: hidden;
 }
 
+.front-word{
+  font-size: 2em;
+  text-align: center;
+}
 
+.flashcards{
+  transform-style: preserve-3d;
+  transform: all 0.5s ease;
+}
+
+.card-front{
+  backface-visibility: hidden;
+  text-align: left;
+}
+
+.card-back{
+  
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+}
+
+.flashcards:hover{
+  transform: rotateY(180deg);
+}
+  
 
 body {
   /* background-image: url('map4.jpg'); */
@@ -56,7 +80,7 @@ body {
 }
 
 .on_Location {
-  padding:40px 0px 0px 40px;
+  padding:40px 0px 0px 10px;
   position: fixed;
 }
 

@@ -15,8 +15,7 @@ $(document).ready(() => {
         $.get(`https://www.dictionaryapi.com/api/v3/references/thesaurus/json/${lookupword}?key=4dc43c31-b7b2-4f24-81e3-3beec40a5906`, function (data) {
             console.log(data)
             if (data[0].shortdef) {
-                $(".modal-body").append(`<p class='meaning'>Meaning: ${data[0].shortdef[0]}</p>
-                <p class='syns'>Synonyms: ${data[0].meta.syns[0].slice(0,3)} </p>`)
+                $(".modal-body").append(`<p class='meaning'>Meaning: ${data[0].shortdef[0]}</p><p class='syns'>Synonyms: ${data[0].meta.syns[0].slice(0,3)} </p>`)
             } else {
                 $(".modal-body").append(`<p>${lookupword} is not found in our English dictionary</p>`)
             }
@@ -29,36 +28,36 @@ $(document).ready(() => {
                 $(".modal-body").append(`<p class='translated'>In Chinese: ${data.text[0]}</p>`)
             }
         })
-    })
 
-    $("#saveVocab").click(event => {
-        event.preventDefault()
-        let title = $(".modal-title").text()
-        let meaning = $(".meaning").text()
-        let syns = $(".syns").text()
-        let translated = $(".translated").text()
-        $.ajax({
-            url: '/vocabulary',
-            type: "POST",
-            dataType: "json",
-            data: {
-                title: title,
-                meaning: meaning,
-                syns: syns,
-                translation: translated
-            },
-            success: data => {
-                console.log("save into archive status:", data)
-                // right now the color change does not persist
-                $('#added_vocab').removeClass("invisible")
-                //disable the add button 
-                $('#saveVocab').attr('disabled', 'disabled')
-            }
+        $("#saveVocab").click(event => {
+            event.preventDefault()
+            let title = $(".modal-title").text()
+            let meaning = $(".meaning").text()
+            let syns = $(".syns").text()
+            let translated = $(".translated").text()
+            $.ajax({
+                url: '/vocabulary',
+                type: "POST",
+                dataType: "json",
+                data: {
+                    title: title,
+                    meaning: meaning,
+                    syns: syns,
+                    translation: translated
+                },
+                success: data => {
+                    console.log("save into archive status:", data)
+                    // right now the color change does not persist
+                    $('#added_vocab').removeClass("invisible")
+                    //disable the add button 
+                    $('#saveVocab').attr('disabled', 'disabled')
+                }
+            })
         })
-    })
 
-    $("#reset-button").click(event => {
-        $("#dict-box").val("")
+        $("#reset-button").click(event => {
+            $("#dict-box").val("")
+        })
     })
 
 
@@ -110,8 +109,12 @@ $(document).ready(() => {
         })
     })
 
-    $(".delete_flashcard").click(() => {
-        let targetTitle = $("#flash_title").text()
+    $(".delete_flashcard").click((event) => {
+        console.log(event.target.id)
+        let position = event.target.id.slice(8)
+        console.log(position)
+        let targetTitle = $(`#flash_title${position}`).text()
+        console.log(targetTitle)
         $.ajax({
             url: '/vocabulary',
             type: "DELETE",
@@ -127,8 +130,11 @@ $(document).ready(() => {
         })
     })
 
-    $(".delete_archive").click(() => {
-        let archiveTitle = $("#archive_title").text()
+    $(".delete_archive").click((event) => {
+        let position = event.target.id.slice(11)
+        console.log(position)
+        let archiveTitle = $(`#archive_title${position}`).text()
+        console.log(archiveTitle)
         $.ajax({
             url: '/archive',
             type: "DELETE",
@@ -144,12 +150,13 @@ $(document).ready(() => {
         })
     })
 
-    $(document).ready(function() {
-        $(".map").click(function() {
-        //    alert("You clicked on " + $(this).attr('rel'));
-        }); 
-    });
-
-
-    // 
+    $('.flashcards').click((event) => {
+        console.log(event.target.id.slice(4))
+        let position = event.target.id.slice(4)
+        $(`#card${position}`).toggleClass("rotate-card")
+        $(`#flash_title${position}`).toggleClass("rotate-card-front")
+        $(`#flash_meaning${position}`).toggleClass("rotate-card-back")
+        $(`#flash_syns${position}`).toggleClass("rotate-card-back")
+        $(`#flash_translation${position}`).toggleClass("rotate-card-back")
+    })
 })
