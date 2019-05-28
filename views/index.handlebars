@@ -41,12 +41,61 @@
 
 
 
-<a id='asia' href='/news/asia'>Asia Pacific</a>
-<a id='africa' href='/news/africa'>Africa</a>
-<a id='europe' href='/news/europe'>Europe</a>
-<a id='middle_east' href='/news/middle_east' >Middle East</a>
-<a id='americas' href='/news/americas' >Americas</a>
-<a id='australia' href='/news/australia'>Australia</a>
+<div id="overlay" onclick="off()">
+  <div id="text">
+    <a id='asia' href='/news/asia' class='btn btn-primary continent-button'>Asia Pacific</a>
+    <a id='africa' href='/news/africa' class='btn btn-primary continent-button'>Africa</a>
+    <a id='europe' href='/news/europe' class='btn btn-primary continent-button'>Europe</a>
+    <a id='middle_east' href='/news/middle_east' class='btn btn-primary continent-button'>Middle East</a>
+    <a id='americas' href='/news/americas' class='btn btn-primary continent-button'>Americas</a>
+    <a id='australia' href='/news/australia' class='btn btn-primary continent-button'>Australia</a>
+  </div>
+</div>
+
+
+<div class="container" onclick="onMap()">   
+  <div class="row">
+    <div class="col">
+      <a id='americas' href='/news/americas'>
+        <img class="amPNG" src='NorthAmericaAppOutline.png'>
+    </a>
+    </div>
+    <div class="col">
+      <a id='africa' href='/news/africa'>
+        <img class="amPNG" src='africa_outline.png'>
+      </a>    
+    </div>
+    <div class="col">
+      <a id='europe' href='/news/europe'>
+        <img class="amPNG" src='europefinal.png'>
+      </a>    
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col">
+      <a id='asia' href='/news/asia'>
+        <img class="amPNG" src='asiaandeuropeoutline.png'>
+      </a>    
+    </div>
+    <div class="col">
+      <a id='middle_east' href='/news/middle_east'>
+        <img class="amPNG" src='middle_east.png'>
+      </a>    
+    </div>
+    <div class="col">
+      <a id='australia' href='/news/australia'>
+        <img class="amPNG" src='australiaoutline.png'>
+      </a>    
+    </div>
+  </div>
+</div>
+    
+
+<div id="test" class="on_Location">
+  <button onclick="on()">Locations</button>
+</div>
+
 
 <div id='article-section' class="masonry">
   {{#each articles}}

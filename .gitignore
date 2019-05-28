@@ -2,6 +2,9 @@
 node_modules/
 articles.db
 package-lock.json
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7b9467c0abbbd9e3143f18b875756de242317be3
 #api keys
 .env

@@ -12,9 +12,10 @@ nav{
 }
 
 .visible {
-  visibility: visible !important;
+  visibility: visible;
 }
 .invisible {
+<<<<<<< HEAD
   visibility: hidden !important;
 }
 
@@ -137,3 +138,77 @@ body{
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+=======
+  visibility: hidden;
+}
+
+.front-word{
+  font-size: 2em;
+  text-align: center;
+}
+
+.flashcards{
+  transform-style: preserve-3d;
+  transform: all 0.5s ease;
+}
+
+.card-front{
+  backface-visibility: hidden;
+  text-align: left;
+}
+
+.card-back{
+  
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+}
+
+.flashcards:hover{
+  transform: rotateY(180deg);
+}
+  
+
+body {
+  /* background-image: url('map4.jpg'); */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.locations {
+  align-content: center;
+}
+
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.88);
+  z-index: 2;
+  cursor: pointer;
+}
+
+#text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 50px;
+  color: white;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+
+.on_Location {
+  padding:80px 0px 0px 10px;
+  position: fixed;
+}
+
+.amPNG {
+  width: 320px;
+}
+>>>>>>> 7b9467c0abbbd9e3143f18b875756de242317be3
