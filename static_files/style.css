@@ -15,7 +15,6 @@ nav{
   visibility: visible;
 }
 .invisible {
-<<<<<<< HEAD
   visibility: hidden !important;
 }
 
@@ -138,9 +137,7 @@ body{
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
-=======
-  visibility: hidden;
-}
+
 
 .front-word{
   font-size: 2em;
@@ -211,4 +208,3 @@ body {
 .amPNG {
   width: 320px;
 }
->>>>>>> 7b9467c0abbbd9e3143f18b875756de242317be3
