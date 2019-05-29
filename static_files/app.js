@@ -1,4 +1,9 @@
 $(document).ready(() => {
+    $('.grid').masonry({
+        // options
+        itemSelector: '.grid-item',
+        columnWidth: 160
+    });
     //$("#dictionary").hide()
     $("#dict-button").click(event => {
         event.preventDefault()

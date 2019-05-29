@@ -1,3 +1,4 @@
+<link href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap" rel="stylesheet">
 <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: #e3f2fd;">
     <a class="navbar-brand">Newds</a>
      <div class="collapse navbar-collapse" id="navbarText">
@@ -96,6 +97,7 @@
 </div>
 
 
+<<<<<<< HEAD
 <div id='article-section' class='container'>
     <ul>
         {{#each articles}}
@@ -118,3 +120,29 @@
         {{/each}}
     </ul>
 </div>
+=======
+<div id='article-section' class="masonry">
+  {{#each articles}}
+  <div class="item"> 
+    <h6 id= "date{{@index}}" class= "datetext"> Date: {{this.publishedAt}} </h6>
+    <h5 id ="title{{@index}}" class = "titletext"> {{this.title}} </h5> 
+    
+    <p id = "description{{@index}}" class= "summarytext"> {{this.description}} </p>
+      <button class="btn btn-primary article_url"  id="url{{@index}}" type="button" data-toggle="collapse" data-target="#collapseExample{{@index}}" aria-expanded="false" aria-controls="collapseExample">
+    {{this.url}}
+    </button>
+    
+    <div class= "collapse" id = "collapseExample{{@index}}">
+      <p class='card' id="content{{@index}}"> {{this.content}} </p>
+      <p class='card' id="translate{{@index}}"></p>
+    </div>
+
+    <button class = "save-btn linkbutton" id="btn{{@index}}" type="button" data-toggle="collapse" data-target="#collapseExample{{@index}}" aria-expanded="false" aria-controls="collapseExample"> Save Article  </button> 
+    
+      
+    
+  </div>
+  {{/each}}
+</div>
+
+>>>>>>> ce2cea6a51ce4a71a090ddda0bfedae443199b5d
