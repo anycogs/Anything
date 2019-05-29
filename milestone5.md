@@ -12,20 +12,22 @@ Revised Article Page:<br />
 Description: This is the revised article page, which is now displayed more neatly.
 <br />
 
-The screenshots reflect the improvements upon the previous milestone as the articles are now displayed more neatly, and the text has been truncated to eliminate wordiness.
+The screenshots reflect the improvements upon the previous milestone as the articles are now displayed more neatly, and the text has been truncated to eliminate wordiness.<br />
 
 
 Save Functionality:<br />
 ![Alt text](./save_Functionality.png)<br />
-Description: With the sa
+Description: With the save functionality, users can save data directly to the database.
 <br /><br />
 
-Landing Page:<br />
+Translations:<br />
 ![Alt text](./article_Translation.png)<br />
-Description: This is the Landing page's visual change.
+Description: This is the translation function.
 <br /><br />
 
-Landing Page:<br />
+Archive Page:<br />
 ![Alt text](./archive.png)<br />
-Description: This is the Landing page's visual change.
-<br /><br />
+Description: This is the Archive page.
+<br />
+
+We were able to implement the initial data display visualtions with the use of handlebars and displaying each page according to which "href" was used. For this milestone, we then improved upon it by implementing the Masonry.js library allowing us to display the articles and notecards in a more organized format.
