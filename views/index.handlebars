@@ -97,30 +97,6 @@
 </div>
 
 
-<<<<<<< HEAD
-<div id='article-section' class='container'>
-    <ul>
-        {{#each articles}}
-        <div>
-            <li>
-                <h2 id="title{{@index}}">{{this.title}}</h2>
-                <button class='save-btn' id="btn{{@index}}">save article</button>
-            </li>
-            <h6 id="date{{@index}}">{{this.publishedAt}}</h6>
-            <h5>{{this.source.name}}</h5>
-            <h5 id="description{{@index}}">Summary: {{this.description}}</h5>
-            <button class="btn btn-primary article_url"  id="url{{@index}}" type="button" data-toggle="collapse" data-target="#collapseExample{{@index}}" aria-expanded="false" aria-controls="collapseExample">
-    {{this.url}}
-  </button>
-            <div class="collapse row" id="collapseExample{{@index}}">
-                <p class='col-sm-6 card' id="content{{@index}}">{{this.content}}</p>
-                <p class='col-sm-6 card' id="translate{{@index}}"></p>
-            </div>
-        </div>
-        {{/each}}
-    </ul>
-</div>
-=======
 <div id='article-section' class="masonry">
   {{#each articles}}
   <div class="item"> 
@@ -145,4 +121,3 @@
   {{/each}}
 </div>
 
->>>>>>> ce2cea6a51ce4a71a090ddda0bfedae443199b5d
