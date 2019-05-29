@@ -15,8 +15,129 @@ nav{
   visibility: visible;
 }
 .invisible {
-  visibility: hidden;
+  visibility: hidden !important;
 }
+
+body{
+  font-family: 'Open Sans', sans-serif;
+  background-color: #f7f8e9;
+}
+
+.masonry { 
+  column-count: 3;
+  column-gap: 5px;
+}
+
+.item {
+  position: relative;
+  background-color: rgb(255, 255, 255);
+  display: inline-block;
+  /*margin: 0 0 1em; */
+  /*margin: 0 1rem 1rem 0; */
+  width: 98%;
+  left: 1%;
+  margin: 0 10px 20px 0; 
+  border-radius: 0px; 
+  padding: 13px;
+  
+} 
+
+.item
+{
+  position: relative;
+}
+.item:before, .item:after
+{
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 15px;
+  left: 10px;
+  width: 50%;
+  top: 80%;
+  max-width:300px;
+  background: #777;
+  box-shadow: 0 15px 10px #777;
+  transform: rotate(-3deg);
+}
+.item:after
+{
+  transform: rotate(3deg);
+  right: 10px;
+  left: auto;
+}
+
+
+.titletext {
+  color: #5299D3;
+  font-weight: bold; 
+  font-family: 'Playfair Display', serif;
+}
+
+.datetext {
+  color:#5299D3;
+  font-size: 10pt;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.summarytext {
+  font-size: 10pt;
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+.linkbutton {
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  color: rgb(92, 146, 247);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 10pt;
+  background-color: white;
+  border: 2px solid rgb(92, 146, 247);
+}
+
+.linkbutton:hover {
+  background-color: rgb(92, 146, 247);
+  color: white;
+}
+
+.sidenav {
+  width: 130px;
+  margin-top: 80px;
+  position: fixed;
+  z-index: 1;
+  top: 20px;
+  left: 10px;
+  background: #eee;
+  overflow-x: hidden;
+  padding: 8px 0;
+  background-color: #2196F3;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1pt;
+  color: white;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #064579;
+}
+
+.main {
+  margin-left: 140px; /* Same width as the sidebar + left position in px */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
 
 .front-word{
   font-size: 2em;
