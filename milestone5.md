@@ -31,3 +31,8 @@ Description: This is the Archive page.
 <br />
 
 We were able to implement the initial data display visualtions with the use of handlebars and displaying each page according to which "href" was used. For this milestone, we then improved upon it by implementing the Masonry.js library allowing us to display the articles and notecards in a more organized format.
+
+<br /><br />
+
+Possible future changes:<br />
+In order to polish our application, we are planning on making the articles and notecards display in a more uniformed manner, making the data visualtion more symmetric and organized. If possible, we may include a way to save vocabulary words directly from the articles itself, eliminating the need for the user to shift back and forth between one functionality and the other. 
