@@ -10,9 +10,10 @@ Description: This is the Landing page's visual change.
 Revised Article Page:<br />
 ![Alt text](./new_Article.png)<br />
 Description: This is the revised article page, which is now displayed more neatly.
-<br /><br />
+<br />
 
 The screenshots reflect the improvements upon the previous milestone as the articles are now displayed more neatly, and the text has been truncated to eliminate wordiness.
+
 
 Save Functionality:<br />
 ![Alt text](./save_Functionality.png)<br />
