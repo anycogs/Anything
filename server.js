@@ -80,7 +80,7 @@ app.get("/news/:continent", (req, res) => {
       country = 'united states'
   }
 
-  queryString = `https://newsapi.org/v2/everything?sortBy=publishedAt&language=en&q=${country}&apiKey=`
+  queryString = `https://newsapi.org/v2/everything?sortBy=publishedAt&language=en&q=${country}&apiKey=${news_api_key}`
   console.log(queryString)
 
   /*  axios.get('https://api.nytimes.com/svc/topstories/v2/world.json?&api-key=gJOF6WJteVdApUHmGIV5wZ5PaKffv1OA') */

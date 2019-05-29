@@ -101,8 +101,8 @@
         {{#each articles}}
         <div>
             <li>
-                <h2 id="title{{@index}}">{{this.title}}</h2><button class='save-btn' id="btn{{@index}}">save
-                    article</button>
+                <h2 id="title{{@index}}">{{this.title}}</h2>
+                <button class='save-btn' id="btn{{@index}}">save article</button>
             </li>
             <h6 id="date{{@index}}">{{this.publishedAt}}</h6>
             <h5>{{this.source.name}}</h5>
@@ -114,7 +114,6 @@
                 <p class='col-sm-6 card' id="content{{@index}}">{{this.content}}</p>
                 <p class='col-sm-6 card' id="translate{{@index}}"></p>
             </div>
-
         </div>
         {{/each}}
     </ul>
