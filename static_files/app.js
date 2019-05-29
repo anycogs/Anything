@@ -82,7 +82,7 @@ $(document).ready(() => {
             console.log(data.text[0])
             $(`#${translateDiv}`).append(`<p>${data.text[0]}</p>`)
             //$(`#${translateDiv}`).removeClass("invisible").addClass("visible")
-
+            $(`#url${position}`).attr('disabled', 'disabled')
         })
         document.getElementById("overlay2").style.display = "none";
     })
@@ -90,7 +90,7 @@ $(document).ready(() => {
     $(".save-btn").click(() => {
         let position = event.target.id.slice(3)
         console.log(position)
-        let saveURL = $(`#url${position}`).text()
+        let saveURL = $(`#urltext${position}`).text()
         let saveTitle = $(`#title${position}`).text()
         let saveDate = $(`#date${position}`).text()
         let saveDescription = $(`#description${position}`).text()
@@ -110,6 +110,8 @@ $(document).ready(() => {
                 console.log("save into archive status:", data)
                 // right now the color change does not persist
                 $(`#btn${position}`).css('background-color', "green")
+                $(`#btn${position}`).attr('disabled', 'disabled')
+                $(`#url${position}`).removeAttr("disabled");
             }
         })
     })
