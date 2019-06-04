@@ -1,14 +1,6 @@
 Milestone 1
-Cogs 121
+Cogs 121 | HCI Programming Studio
 4/22/19
-
-TeamName: Anything
-
-Team Member List:
-1) Huy Le
-2) Alice Lee
-3) Madeline Ng
-4) Senyan Luo<br />
 
 Project Proposal:<br />
 For our project, we will be making a language learning application. Our application is catered towards those located outside of America trying to learn and study the English language. With this application, we hope to improve our user's proficiency in the English language by incorporating news articles that users can interact with by highlighting keywords they are unable to understand, allowing them to translate as well as create notecards with explanations/descriptions for them to reference back to. As news articles are written quite intrinsically, it is also a great way for user's across the globe to learn formatting, grammar, and punctuation in the English language.
