@@ -57,47 +57,35 @@
   </div>
 
 
-  <div class="container" onclick="onMap()">
-    <div class="row">
-      <div class="col">
-        <a id='americas' href='/news/americas'>
-          <img class="amPNG" src='NorthAmericaAppOutline.png'>
-        </a>
-      </div>
-      <div class="col">
-        <a id='africa' href='/news/africa'>
-          <img class="amPNG" src='africa_outline.png'>
-        </a>
-      </div>
-      <div class="col">
-        <a id='europe' href='/news/europe'>
-          <img class="amPNG" src='europefinal.png'>
-        </a>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col">
-        <a id='asia' href='/news/asia'>
-          <img class="amPNG" src='asiaandeuropeoutline.png'>
-        </a>
-      </div>
-      <div class="col">
-        <a id='middle_east' href='/news/middle_east'>
-          <img class="amPNG" src='middle_east.png'>
-        </a>
-      </div>
-      <div class="col">
-        <a id='australia' href='/news/australia'>
-          <img class="amPNG" src='australiaoutline.png'>
-        </a>
-      </div>
-    </div>
-  </div>
-
-
   <div id="test" class="on_Location">
     <button onclick="on()">Change<br />Location</button>
   </div>
 
 
+  <div id='article-section' class="masonry" style="margin:1em 4em 1em 6.5em;">
+    {{#each articles}}
+    <div class="item">
+      <div class="container"><div class='row justify-content-between'>
+        <div class='col'><h6 id="date{{@index}}" class="datetext">{{this.publishTime}} </h6></div>
+        <div class='col'><button class="save-btn linkbutton" id="btn{{@index}}" type="button" data-toggle="collapse"
+          data-target="#collapseExample{{@index}}" aria-expanded="false" aria-controls="collapseExample"> Save Article
+        </button></div>
+      </div>
+      </div>
+      
+      
+      <h5 id="title{{@index}}" class="titletext"> {{this.title}} </h5>
+      <p id="description{{@index}}" class="summarytext">{{this.description}}</p>
+      <div align='center'>
+      <button class="btn btn-primary article_url" id="url{{@index}}" type="button" data-toggle="collapse"
+        data-target="#collapseExample{{@index}}" aria-expanded="false" aria-controls="collapseExample" style="margin-bottom: 1em;">
+        Read Article
+      </button></div>
+      <div class="collapse" id="collapseExample{{@index}}">
+        <p class='card' id="content{{@index}}"> {{this.content}} </p>
+        <p class='card' id="translate{{@index}}"></p>
+        <p id="urltext{{@index}}">{{this.url}}</p> 
+      </div>
+    </div>
+    {{/each}}
+  </div>
