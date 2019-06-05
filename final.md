@@ -1,6 +1,6 @@
 Alice Lee: I worked on the front-end development of the overall application which includes the home page, 
 article page, archive page, and navigation bar. I implemented a masonry layout for the article page 
-and creating the map icons on the home page. 
+and creating the map icons on the home page. I prototyped the designs in the beginning and created digital prototypes in Figma. 
 
 Senyan Luo
 
@@ -10,12 +10,12 @@ Madeline Ng: I worked on the front end development of the vocabulary builder pag
 
 Source code files: 
 
-index.handlebars
+index.handlebars: The main page. 
 main.handlebars 
 archive.handlebars
 vocabulary.handlebars
-articles.handlebars
-style.css
+articles.handlebars: The frontend for the articles page. 
+style.css: All the style of our app. 
 app.js
 
 Google Slides (Presentation) 
