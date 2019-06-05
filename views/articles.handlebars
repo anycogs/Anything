@@ -17,11 +17,14 @@
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" id='dict-box' placeholder="look up this word... 翻译 "
         aria-label="Search">
-      <button class="btn btn-outline-primary data-toggle=" modal" data-target="#dictModal" id="dict-button"
-        type="submit" ">translate</button>
+      <button class="btn btn-outline-primary" data-toggle="modal" data-target="#dictModal" id="dict-button"
+        type="submit">translate</button>
   </form>
     </div>
 </nav>
+
+{{!-- add an dict icon that can also trigger the modal, click-> modal for input -> modal --}}
+<a type="button" data-toggle="modal" data-target="#exampleModal"><img src="../static_files/"></a>
 
 <div class=" modal fade" id="dictModal" tabindex="-1" role="dialog" aria-labelledby="dictModalLabel"
         aria-hidden="true">
@@ -31,7 +34,6 @@
               <h5 class="modal-title" id="dictModalLabel"></h5>
             </div>
             <div class="modal-body">
-
             </div>
             <div id="added_vocab" class="invisible alert alert-primary">New word successfully added to your <a
                 href='/vocabulary'>VocabBuilder</a> </div>

@@ -109,7 +109,7 @@ $(document).ready(() => {
             success: data => {
                 console.log("save into archive status:", data)
                 // right now the color change does not persist
-                $(`#btn${position}`).css('background-color', "green")
+                $(`#btn${position}`).css('background-color', "#88a2a9")
                 $(`#btn${position}`).attr('disabled', 'disabled')
                 $(`#url${position}`).removeAttr("disabled");
             }
