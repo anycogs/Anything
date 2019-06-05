@@ -2,7 +2,7 @@ Alice Lee: I worked on the front-end development of the overall application whic
 article page, archive page, and navigation bar. I implemented a masonry layout for the article page 
 and creating the map icons on the home page. I prototyped the designs in the beginning and created digital prototypes in Figma. 
 
-Senyan Luo
+Senyan Luo: I led the project and completed the full-stack skeleton of the app. Throughout the project development, I also assisted teammates with debugging. 
 
 Huy Le: I assisted with brainstorming ideas for our application, worked on our milestone.md's, as well as contributed to the front end and GUI of our application.
 
@@ -21,4 +21,5 @@ app.js
 Google Slides (Presentation) 
 https://docs.google.com/presentation/d/1v95xtA0lu9cr7ulALLzWqHT1jtFXXdJIna314WFc1Nw/edit?usp=sharing
 
+Link to demo video: 
 
