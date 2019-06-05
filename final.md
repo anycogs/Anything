@@ -16,7 +16,10 @@ archive.handlebars
 vocabulary.handlebars
 articles.handlebars: The frontend for the articles page. 
 style.css: All the style of our app. 
-app.js
+app.js: contains all onclick events for buttons, API calls to dictionary and chinese translation as well as ajax calls to save contents are made here. 
+server.js: Backend code for the app. Set handlebars as the default rendering engine, used Express.js for routing, and made api call to the newsapi.org. The data received is sent and rendered on their respective handlebars page on the frontend. 
+database_config.js: Configurations of sqlite3 database. Created both the archive and vocabulary tables here. 
+
 
 Google Slides (Presentation) 
 https://docs.google.com/presentation/d/1v95xtA0lu9cr7ulALLzWqHT1jtFXXdJIna314WFc1Nw/edit?usp=sharing
