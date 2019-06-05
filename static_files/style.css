@@ -3,6 +3,10 @@ nav{
     margin-bottom: 2em;
 }
 
+#navbarText {
+  color: white;
+}
+
 .articleContent{
     padding: 1em;
 }
@@ -18,9 +22,11 @@ nav{
   visibility: hidden !important;
 }
 
+
 body{
-  font-family: 'Open Sans', sans-serif;
-  background-color: #f7f8e9;
+ /* font-family: 'Open Sans', sans-serif; */
+  background-color: #ebe7c7;
+  font-family: 'Merriweather Sans', sans-serif;
 }
 
 .masonry { 
@@ -69,19 +75,20 @@ body{
 
 
 .titletext {
-  color: #5299D3;
+  color: black;
   font-weight: bold; 
-  font-family: 'Playfair Display', serif;
+  font-family: 'Merriweather Sans', sans-serif;
 }
 
 .datetext {
-  color:#5299D3;
+  color:#717C89;
   font-size: 10pt;
   font-family: 'Open Sans', sans-serif;
 }
 
 .summarytext {
   font-size: 10pt;
+  color: #717C89;
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -89,18 +96,32 @@ body{
 .linkbutton {
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
-  color: rgb(92, 146, 247);
+  color: #8AA2A9;
   font-family: 'Open Sans', sans-serif;
   font-size: 10pt;
   background-color: white;
-  border: 2px solid rgb(92, 146, 247);
+  border: 2px solid #8AA2A9;
+  margin-left: 45px; 
+}
+#background {
+  background-color: white;
 }
 
 .linkbutton:hover {
-  background-color: rgb(92, 146, 247);
+  background-color:#8AA2A9;
   color: white;
 }
 
+.readbutton{
+  background-color:white;
+  border: 2px solid #8AA2A9;
+  color: #8AA2A9;
+}
+
+.readbutton:hover {
+  background-color:#8AA2A9;
+  color: white;
+}
 .sidenav {
   width: 130px;
   margin-top: 80px;
@@ -176,6 +197,12 @@ body {
   align-content: center;
 }
 
+.continent-button {
+  color: white;
+  background-color: rgb(117, 111, 111);
+  border: black;
+}
+
 #overlay {
   position: fixed;
   display: none;
@@ -207,4 +234,57 @@ body {
 
 .amPNG {
   width: 320px;
+}
+
+.collapseBorder {
+  border: none;
+  color:#717C89;
+}
+
+a.navbar-brand {
+  color: white;
+}
+
+.topBorder{
+  border-top: black;
+}
+
+.urltext{
+  color:#717C89;
+}
+
+#main_text {
+  color: black;
+  font
+}
+
+#delete_article {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+/*
+.translate_button {
+  background-color: rgb(53, 53, 53);
+  color: rgb(255, 255, 255);
+  border: 2px solid #ffffff;
+}
+
+.translate_button:hover {
+  background-color: #ffffff;
+  color: black;
+} */
+
+#dict-button {
+  border-color: #ffffff;
+  color: white;
+}
+
+#dict-button:hover {
+  background-color: white;
+  color: black;
+}
+
+#saveVocab {
+  background-color: grey;
+  color:white;
 }
