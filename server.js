@@ -42,7 +42,7 @@ app.get("/vocabulary", function (req, res) {
 });
 
 
-app.get("/news/:continent", (req, res) => {
+app.get("/:continent", (req, res) => {
   console.log("You hit the /:continent endpoint")
   const location = req.params.continent
   console.log(location)
@@ -78,7 +78,7 @@ app.get("/news/:continent", (req, res) => {
   
   axios.get(queryString)
     .then(function (data) {
-      console.log("*****************************************************************" + JSON.parse(JSON.stringify(data.data.articles)))
+      /* console.log("*****************************************************************" + JSON.parse(JSON.stringify(data.data.articles))) */
       //convert time format
       data.data.articles.forEach(function(doc){
         console.log(doc.publishedAt)

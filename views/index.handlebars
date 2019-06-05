@@ -1,15 +1,19 @@
-
-<nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: #e3f2fd;">
-  <a class="navbar-brand">Newds</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="font-family: 'Merriweather Sans', sans-serif;">
+  <a class="navbar-brand" href="/"> <img src='/newspaper.png' width="30" height="30" class="d-inline-block align-top"
+      alt="" style="font-family: 'Noto Sans HK', sans-serif;"> Send News </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
   <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+    <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="/">Home/主页</a>
+        <a class="nav-link" href="/">Home/主页 <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/archive" id="nav-archive">Archive/收藏</a>
+      <li class="nav-item">
+        <a class="nav-link" href="/archive" id="nav-archive>">Archive/收藏</a>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="/vocabulary">VocabBuilder/单词本</a>
       </li>
     </ul>
@@ -19,85 +23,82 @@
         aria-label="Search">
       <button class="btn btn-outline-primary" data-toggle="modal" data-target="#dictModal" id="dict-button"
         type="submit">translate</button>
-  </form>
-    </div>
+    </form>
+  </div>
 </nav>
 
-<div class=" modal fade" id="dictModal" tabindex="-1" role="dialog" aria-labelledby="dictModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="dictModalLabel"></h5>
-            </div>
-            <div class="modal-body">
-
-            </div>
-            <div id="added_vocab" class="invisible alert alert-primary">New word successfully added to your <a
-                href='/vocabulary'>VocabBuilder</a> </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" id="saveVocab">Add to VocabBuilder</button>
-              <button type="button" id="reset-button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-  </div>
-
-
-
-  <div id="overlay" onclick="off()">
-    <div id="text">
-      <a id='asia' href='/news/asia' class='btn btn-primary continent-button'>Asia Pacific</a>
-      <a id='africa' href='/news/africa' class='btn btn-primary continent-button'>Africa</a>
-      <a id='europe' href='/news/europe' class='btn btn-primary continent-button'>Europe</a>
-      <a id='middle_east' href='/news/middle_east' class='btn btn-primary continent-button'>Middle East</a>
-      <a id='americas' href='/news/americas' class='btn btn-primary continent-button'>Americas</a>
-      <a id='australia' href='/news/australia' class='btn btn-primary continent-button'>Australia</a>
-    </div>
-  </div>
-
-
-  <div class="container" onclick="onMap()">
-    <div class="row">
-      <div class="col">
-        <a id='americas' href='/news/americas'>
-          <img class="amPNG" src='NorthAmericaAppOutline.png'>
-        </a>
+<div class="modal fade" id="dictModal" tabindex="-1" role="dialog" aria-labelledby="dictModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="dictModalLabel"></h5>
       </div>
-      <div class="col">
-        <a id='africa' href='/news/africa'>
-          <img class="amPNG" src='africa_outline.png'>
-        </a>
-      </div>
-      <div class="col">
-        <a id='europe' href='/news/europe'>
-          <img class="amPNG" src='europefinal.png'>
-        </a>
-      </div>
-    </div>
+      <div class="modal-body">
 
-    <div class="row">
-      <div class="col">
-        <a id='asia' href='/news/asia'>
-          <img class="amPNG" src='asiaandeuropeoutline.png'>
-        </a>
       </div>
-      <div class="col">
-        <a id='middle_east' href='/news/middle_east'>
-          <img class="amPNG" src='middle_east.png'>
-        </a>
-      </div>
-      <div class="col">
-        <a id='australia' href='/news/australia'>
-          <img class="amPNG" src='australiaoutline.png'>
-        </a>
+      <div id="added_vocab" class="invisible alert alert-primary">New word successfully added to your <a
+          href='/vocabulary'>VocabBuilder</a> </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="saveVocab">Add to VocabBuilder</button>
+        <button type="button" id="reset-button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
+</div>
 
 
-  <div id="test" class="on_Location">
-    <button onclick="on()">Change<br />Location</button>
+<div id="overlay" onclick="off()">
+  <div id="text">
+    <a id='asia' href='/asia' class='btn btn-primary continent-button'>Asia Pacific</a>
+    <a id='africa' href='/africa' class='btn btn-primary continent-button'>Africa</a>
+    <a id='europe' href='/europe' class='btn btn-primary continent-button'>Europe</a>
+    <a id='middle_east' href='/middle_east' class='btn btn-primary continent-button'>Middle East</a>
+    <a id='americas' href='/americas' class='btn btn-primary continent-button'>Americas</a>
+    <a id='australia' href='/australia' class='btn btn-primary continent-button'>Australia</a>
+  </div>
+</div>
+
+
+<div class="container" onclick="onMap()">
+  <div class="row">
+    <div class="col">
+      <a id='americas' href='/americas'>
+        <img class="amPNG" src='northamericafinal.png'>
+      </a>
+    </div>
+    <div class="col">
+      <a id='africa' href='/africa'>
+        <img class="amPNG" src='africafinal.png'>
+      </a>
+    </div>
+    <div class="col">
+      <a id='europe' href='/europe'>
+        <img class="amPNG" src='europefinal.png'>
+      </a>
+    </div>
   </div>
 
+  <div class="row">
+    <div class="col">
+      <a id='asia' href='/asia'>
+        <img class="amPNG" src='asia.png'>
+      </a>
+    </div>
+    <div class="col">
+      <a id='middle_east' href='/middle_east'>
+        <img class="amPNG" src='middleastfinal.png'>
+      </a>
+    </div>
+    <div class="col">
+      <a id='australia' href='/australia'>
+        <img class="amPNG" src='australiafinal.png'>
+      </a>
+    </div>
 
+  </div>
+</div>
+
+
+<div id="test" class="on_Location">
+  <button type="button" class="btn btn-secondary" onclick="on()">Change<br />Location</button>
+</div>
