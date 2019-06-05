@@ -19,4 +19,6 @@ style.css
 app.js
 
 Google Slides (Presentation) 
-//TODO FOR MADI
+https://docs.google.com/presentation/d/1v95xtA0lu9cr7ulALLzWqHT1jtFXXdJIna314WFc1Nw/edit?usp=sharing
+
+
