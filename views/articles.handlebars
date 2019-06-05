@@ -18,12 +18,12 @@
       </li>
     </ul>
 
-    <form class="form-inline my-2 my-lg-0">
+    {{!-- <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" id='dict-box' placeholder="look up this word... 翻译 "
         aria-label="Search">
       <button class="btn btn-outline-primary" data-toggle="modal" data-target="#dictModal" id="dict-button"
         type="submit">translate</button>
-    </form>
+    </form> --}}
   </div>
 </nav>
 
@@ -63,9 +63,18 @@
   <button type="button" class="btn btn-secondary" onclick="on()">Change<br />Location</button>
 </div>
 
-<div>
-  <a><img ></a>
+{{!-- make it draggable --}} 
+<div id="floating_dict">
+  <a type="button" id="toggle-floating-dict"><i class="fas fa-book"></i></a><p id="floating_dictheader"><strong>DICT</strong></p>
+  <form class="form-inline invisible" id="article-dict">
+      <input class="form-control" style="width: 40%;" type="text" id='dict-box' placeholder="translate.."
+        aria-label="Search">
+      <button class="btn btn-secondary" data-toggle="modal" data-target="#dictModal" id="dict-button"
+        type="submit"><i class="fas fa-search"></i></button>
+    </form>
+    
 </div>
+
  
 
   <div id='article-section' class="masonry" style="margin:1em 4em 1em 6.5em;">
