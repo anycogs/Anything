@@ -271,6 +271,9 @@ a.navbar-brand {
   color: white;
 }
 
+nav{
+margin-bottom: 0.8em;
+}
 .topBorder{
   border-top: black;
 }
