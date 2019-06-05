@@ -13,6 +13,10 @@ Source code files:
 index.handlebars
 main.handlebars 
 archive.handlebars
+vocabulary.handlebars
+articles.handlebars
+style.css
+app.js
 
 Google Slides (Presentation) 
 //TODO FOR MADI

@@ -4,6 +4,10 @@ $(document).ready(() => {
         itemSelector: '.grid-item',
         columnWidth: 160
     });
+    $("#toggle-floating-dict").click(event => {
+        event.preventDefault()
+        $('#article-dict').toggleClass("invisible")
+    })
     //$("#dictionary").hide()
     $("#dict-button").click(event => {
         event.preventDefault()
@@ -33,38 +37,40 @@ $(document).ready(() => {
                 $(".modal-body").append(`<p class='translated'>In Chinese: ${data.text[0]}</p>`)
             }
         })
-
-        $("#saveVocab").click(event => {
-            event.preventDefault()
-            let title = $(".modal-title").text()
-            let meaning = $(".meaning").text()
-            let syns = $(".syns").text()
-            let translated = $(".translated").text()
-            $.ajax({
-                url: '/vocabulary',
-                type: "POST",
-                dataType: "json",
-                data: {
-                    title: title,
-                    meaning: meaning,
-                    syns: syns,
-                    translation: translated
-                },
-                success: data => {
-                    console.log("save into archive status:", data)
-                    // right now the color change does not persist
-                    $('#added_vocab').removeClass("invisible")
-                    //disable the add button 
-                    $('#saveVocab').attr('disabled', 'disabled')
-                }
-            })
-        })
-
-        $("#reset-button").click(event => {
-            $("#dict-box").val("")
+    })
+    $("#saveVocab").click(event => {
+        event.preventDefault()
+        let title = $(".modal-title").text()
+        let meaning = $(".meaning").text()
+        let syns = $(".syns").text()
+        let translated = $(".translated").text()
+        $.ajax({
+            url: '/vocabulary',
+            type: "POST",
+            dataType: "json",
+            data: {
+                title: title,
+                meaning: meaning,
+                syns: syns,
+                translation: translated
+            },
+            success: data => {
+                console.log("save into archive status:", data)
+                // right now the color change does not persist
+                $('#added_vocab').removeClass("invisible")
+                //disable the add button 
+                $('#saveVocab').attr('disabled', 'disabled')
+            }
         })
     })
 
+    $("#reset-button").click(event => {
+        $("#dict-box").val("")
+        //also clean everything on the modal
+        $(".modal-body").empty()
+        $("#word-meaning").empty()
+        $(".modal-title").empty()
+    })
 
     $(".article_url").click(() => {
         let contentURL = $(event.target).text()
@@ -109,7 +115,7 @@ $(document).ready(() => {
             success: data => {
                 console.log("save into archive status:", data)
                 // right now the color change does not persist
-                $(`#btn${position}`).css('background-color', "green")
+                $(`#btn${position}`).css('background-color', "#88a2a9")
                 $(`#btn${position}`).attr('disabled', 'disabled')
                 $(`#url${position}`).removeAttr("disabled");
             }

@@ -18,12 +18,12 @@
       </li>
     </ul>
 
-    <form class="form-inline my-2 my-lg-0">
+    {{!-- <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" id='dict-box' placeholder="look up this word... 翻译 "
         aria-label="Search">
       <button class="btn btn-outline-primary" data-toggle="modal" data-target="#dictModal" id="dict-button"
         type="submit">translate</button>
-    </form>
+    </form> --}}
   </div>
 </nav>
 
@@ -59,46 +59,48 @@
 </div>
 
 
-<div class="container" onclick="onMap()">
-  <div class="row">
-    <div class="col">
-      <a id='americas' href='/americas'>
-        <img class="amPNG" src='northamericafinal.png'>
-      </a>
-    </div>
-    <div class="col">
-      <a id='africa' href='/africa'>
-        <img class="amPNG" src='africafinal.png'>
-      </a>
-    </div>
-    <div class="col">
-      <a id='europe' href='/europe'>
-        <img class="amPNG" src='europefinal.png'>
-      </a>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col">
-      <a id='asia' href='/asia'>
-        <img class="amPNG" src='asia.png'>
-      </a>
-    </div>
-    <div class="col">
-      <a id='middle_east' href='/middle_east'>
-        <img class="amPNG" src='middleastfinal.png'>
-      </a>
-    </div>
-    <div class="col">
-      <a id='australia' href='/australia'>
-        <img class="amPNG" src='australiafinal.png'>
-      </a>
-    </div>
-
-  </div>
-</div>
-
-
 <div id="test" class="on_Location">
   <button type="button" class="btn btn-secondary" onclick="on()">Change<br />Location</button>
 </div>
+
+{{!-- make it draggable --}} 
+<div id="floating_dict">
+  <a type="button" id="toggle-floating-dict"><i class="fas fa-book"></i></a><p id="floating_dictheader"><strong>DICT</strong></p>
+  <form class="form-inline invisible" id="article-dict">
+      <input class="form-control" style="width: 40%;" type="text" id='dict-box' placeholder="translate.."
+        aria-label="Search">
+      <button class="btn btn-secondary" data-toggle="modal" data-target="#dictModal" id="dict-button"
+        type="submit"><i class="fas fa-search"></i></button>
+    </form>
+    
+</div>
+
+ 
+
+  <div id='article-section' class="masonry" style="margin:1em 4em 1em 6.5em;">
+    {{#each articles}}
+    <div class="item">
+      <div class="container topbar"><div class='row justify-content-between'>
+        <div class='col'><h6 id="date{{@index}}" class="datetext">{{this.publishTime}} </h6></div>
+        <div class='col'><button class="save-btn linkbutton" id="btn{{@index}}" type="button" data-toggle="collapse"
+          data-target="#collapseExample{{@index}}" aria-expanded="false" aria-controls="collapseExample"> Save Article
+        </button></div>
+      </div>
+      </div>
+      
+      
+      <h5 id="title{{@index}}" class="titletext"> {{this.title}} </h5>
+      <p id="description{{@index}}" class="summarytext">{{this.description}}</p>
+      <div align='center'>
+      <button class="article_url readbutton" id="url{{@index}}" type="button" data-toggle="collapse"
+        data-target="#collapseExample{{@index}}" aria-expanded="false" aria-controls="collapseExample" style="margin-bottom: 1em;">
+        Read Article
+      </button></div>
+      <div class="collapse" id="collapseExample{{@index}}">
+        <p class='card topBorder' id="content{{@index}}"> {{this.content}} </p>
+        <p class='card collapseBorder' id="translate{{@index}}"></p>
+        <a class ='collapseBorder'id="urltext{{@index}}" href= "{{this.url}}" target="_blank">{{this.url}}</a> 
+      </div>
+    </div>
+    {{/each}}
+  </div>
