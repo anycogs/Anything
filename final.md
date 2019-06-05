@@ -6,7 +6,7 @@ Senyan Luo
 
 Huy Le
 
-Madeline Ng
+Madeline Ng: I worked on the front end development of the vocabulary builder page with Senyan and creating rotating flashcards. 
 
 Source code files: 
 
