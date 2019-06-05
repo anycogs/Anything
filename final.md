@@ -6,7 +6,7 @@ Senyan Luo
 
 Huy Le
 
-Madeline Ng: I worked on the front end development of the vocabulary builder page in collaboration with Senyan and created rotating flashcards that display the word in the front and the other information on the back. Together, we all brainstormed and explored variations of the News app concept and catering it to an audience that is different from us. Came up with ideas for slogan and app name. I created several digital prototypes using Adobe Xd. 
+Madeline Ng: I worked on the front end development of the vocabulary builder page in collaboration with Senyan and created rotating flashcards that display the word in the front and the other information on the back. Together, we all brainstormed and explored variations of the News app concept and catering it to an audience that is different from us. Came up with ideas for slogan and app name. I created several digital prototypes using Adobe Xd. Contributed to the README.files. 
 
 Source code files: 
 
